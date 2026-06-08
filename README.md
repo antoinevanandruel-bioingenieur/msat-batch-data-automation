@@ -24,3 +24,16 @@ As a Bioengineer with 5 years of experience in Pharmaceutical Quality Assurance,
 * **Libraries used (Conceptual):** `pandas` (data manipulation), `numpy` (numerical calculations), `os` (file system automation).
 * **Target Users:** MSAT Scientists, Process Engineers, and Quality Officers.
 
+## ⚙️ How the Pipeline Logic Works (Pseudocode)
+
+To ensure maximum transparency and align with Computerized System Validation (CSV) expectations, the automation sequence follows these strict logical steps:
+
+1. **Ingestion:** Scan the target directory for new production `.csv` or `.xlsx` exports.
+2. **Structural Check:** Verify that required columns (`Batch_ID`, `pH`, `Viable_Cell_Density`) exist. If not, trigger a critical GxP log alert.
+3. **Data Cleaning:** 
+   * Forward-fill missing `Batch_ID` values based on time-series proximity.
+   * Apply a data-integrity filter to isolate and remove non-physical outliers (e.g., VCD values > 100 M/mL).
+   * Interpolate isolated missing sensor records (like `DO_Percent`) using rolling averages.
+4. **Traceability Logging:** Generate an automated text log capturing the number of rows modified, execution time, and user ID to maintain a perfect audit trail.
+5. **Export:** Write the standardized dataset into the secure `data_example_clean.csv` repository for downstream MSAT monitoring.
+
