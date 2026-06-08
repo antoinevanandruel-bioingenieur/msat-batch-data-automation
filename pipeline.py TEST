@@ -89,7 +89,7 @@ def clean_msat_data(input_file, output_file):
 # ==========================================
 # ETAPE 3 : EXÉCUTION
 # ==========================================
-clean_msat_data_advanced("data_example_raw.csv", "data_example_clean.csv")
+    clean_msat_data_advanced("data_example_raw.csv", "data_example_clean.csv")
 
     # 4. Exportation du fichier final propre
     df.to_csv(output_file, index=False)
