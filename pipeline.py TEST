@@ -53,7 +53,7 @@ def clean_msat_data(input_file, output_file):
     # J'utilise un test logique pour éliminer les valeurs incohérentes. df[...] cache les lignes qui ont répondu FALSE. 
     # Il ne me reste plus qu'à réécrire df= pour remplacer l'ancien tableau par ce nouveau tableau propre. 
 
-    # Règle C : Je remplis le DO_Percent manquant par la moyenne de la colonne. C'est une approximation sans doute pas incroyable.
+    # Règle C : Je remplis le DO_Percent manquant par la moyenne de la colonne. C'est une approximation qui pourrait être remise en cause.
     # Commentaire: revoir la règle C en utilisant une approximation linéaire plutôt ou autre?
 
     mean_do = df["DO_Percent"].mean()
